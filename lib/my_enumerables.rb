@@ -48,6 +48,12 @@ module Enumerable
 
     results
   end
+
+  def my_inject(init = 0)
+    my_each { |elem| init = yield(init, elem) }
+
+    init
+  end
 end
 
 class Array
