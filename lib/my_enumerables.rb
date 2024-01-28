@@ -1,12 +1,16 @@
 module Enumerable
   def my_each_with_index
-    i = 0
+    index = -1
 
-    for elem in self
-      yield(elem, i)
+    my_each { |elem| yield(elem, index += 1) }
+  end
 
-      i += 1
-    end
+  def my_select
+    results = []
+
+    my_each { |elem| results.push(elem) if yield elem }
+
+    results
   end
 end
 
